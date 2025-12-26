@@ -1,0 +1,111 @@
+/* 全体のリセットとフォント設定 */
+body {
+    margin: 0;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+    color: #333; /* 文字の色を少し柔らかい黒に */
+}
+
+/* ヘッダー：左寄せ ＆ 影を追加 */
+header {
+    background-color: blueviolet;
+    color: white;
+    padding: 15px 25px; /* 上下15px、左右25pxの余白 */
+    text-align: left;    /* ← 左寄せに設定 */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* ← 下方向にうっすら影 */
+    position: relative;
+    z-index: 10; /* 影がサイドバーの上に重なるようにする */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: 1px; /* 文字の間隔を少し広げておしゃれに */
+}
+
+/* 横並びレイアウト */
+.container {
+    display: flex;
+}
+
+/* サイドバー：スクロールしてもついてくる設定 */
+.sidebar {
+    width: 220px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    
+    /* 画面に固定する魔法のセット */
+    position: sticky; 
+    top: 0;           
+    height: 100vh; /* 修正：ヘッダーの下から画面下まで固定 */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-label {
+    padding: 15px 20px;
+    background-color: transparent; /* 背景を透明に */
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s; /* 色の変化をふわっとさせる */
+}
+
+.menu-label:hover {
+    background-color: #e9ecef;
+    color: blueviolet; /* ホバー時に文字色も変えるとかっこいい */
+}
+
+/* --- 子メニュー（JS用・馴染みの良いデザイン） --- */
+.submenu {
+    display: none; /* JSで.openがつくまで隠す */
+    background-color: #fafafa; /* ほんの少しグレーにして「中身」感を出す */
+    padding: 0;
+}
+
+/* 子メニューの各項目 */
+.submenu li {
+    padding: 12px 20px 12px 40px; /* 左側を40px空けて字下げ */
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+}
+
+/* 最後の項目の線は消す */
+.submenu li:last-child {
+    border-bottom: none;
+}
+
+/* ホバー時はシンプルに背景色を変えるだけ */
+.submenu li:hover {
+    background-color: #f0f0f0;
+}
+
+/* 【重要】JSが「open」を付けた時だけ表示するルール */
+.menu-item.open .submenu {
+    display: block;
+}
+
+/* 開いている時のラベルの色を変える（おまけ） */
+.menu-item.open .menu-label {
+    background-color: #f0ebff;
+    color: blueviolet;
+    font-weight: bold;
+}
+/* ------------------------------------------- */
+
+/* メインコンテンツ */
+.content {
+    flex: 1;
+    padding: 40px; /* 余白を広めにとって読みやすく */
+    background-color: #fff;
+}
+
+.content h2 {
+    border-left: 5px solid blueviolet; /* 見出しの横に縦線を入れる */
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
